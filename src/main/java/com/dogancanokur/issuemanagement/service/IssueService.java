@@ -1,16 +1,17 @@
 package com.dogancanokur.issuemanagement.service;
 
-import com.dogancanokur.issuemanagement.entity.Issue;
+import com.dogancanokur.issuemanagement.model.input.IssueInput;
+import com.dogancanokur.issuemanagement.model.output.IssueOutput;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
 public interface IssueService {
-    Issue save(Issue issue);
+    IssueOutput save(IssueInput issueInput);
 
-    Issue getByID(Long id);
+    IssueOutput getByID(Long id);
 
-    Page<Issue> getAllPageable(Pageable pageable);
+    Page<IssueOutput> getAllPageable(Pageable pageable);
 
-    Boolean deleteIssue(Issue issue);
+    Boolean deleteIssue(IssueInput issue);
 }

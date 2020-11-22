@@ -31,6 +31,7 @@ public class Issue extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private IssueStatus issueStatus;
 
+    //    @JsonIgnore
     @JoinColumn(name = "assignee_user_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private User assignee;

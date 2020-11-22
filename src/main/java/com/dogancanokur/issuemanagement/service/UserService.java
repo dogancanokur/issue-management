@@ -1,15 +1,16 @@
 package com.dogancanokur.issuemanagement.service;
 
-import com.dogancanokur.issuemanagement.entity.User;
+import com.dogancanokur.issuemanagement.model.input.UserInput;
+import com.dogancanokur.issuemanagement.model.output.UserOutput;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface UserService {
-    User save(User user);
+    UserOutput save(UserInput user);
 
-    User getOne(Long id);
+    UserOutput getOne(Long id);
 
-    Page<User> findAll(Pageable pageable);
+    Page<UserOutput> findAll(Pageable pageable);
 
-    User getByUsername(String username);
+    UserOutput getByUsername(String username);
 }

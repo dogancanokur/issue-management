@@ -1,8 +1,11 @@
 package com.dogancanokur.issuemanagement.service.impl;
 
 import com.dogancanokur.issuemanagement.entity.Project;
+import com.dogancanokur.issuemanagement.model.input.ProjectInput;
+import com.dogancanokur.issuemanagement.model.output.ProjectOutput;
 import com.dogancanokur.issuemanagement.repository.ProjectRepository;
 import com.dogancanokur.issuemanagement.service.ProjectService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,29 +16,34 @@ import java.util.List;
 @Service
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
+    private final ModelMapper modelMapper;
+
 
     @Autowired
-    public ProjectServiceImpl(ProjectRepository projectRepository) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, ModelMapper modelMapper) {
         this.projectRepository = projectRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public Project save(Project project) {
-        if (project.getProjectCode() == null) {
+    public ProjectOutput save(ProjectInput projectInput) {
+        if (projectInput.getProjectCode() == null) {
             throw new IllegalArgumentException("Project code cannot be null!");
         }
 
-        return projectRepository.save(project);
+        Project project = modelMapper.map(projectInput, Project.class);
+        return modelMapper.map(projectRepository.save(project), ProjectOutput.class);
     }
 
     @Override
-    public Project getOne(Long id) {
-        return projectRepository.getOne(id);
+    public ProjectOutput getOne(Long id) {
+        return modelMapper.map(projectRepository.getOne(id), ProjectOutput.class);
     }
 
     @Override
-    public Page<Project> findAll(Pageable pageable) {
-        return projectRepository.findAll(pageable);
+    public Page<ProjectOutput> findAll(Pageable pageable) {
+//        return projectRepository.findAll(pageable);
+        return null;
     }
 
     @Override
@@ -45,12 +53,14 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<Project> getAllByProjectCode(String projectCode) {
-        return projectRepository.getAllByProjectCode(projectCode);
+    public List<ProjectOutput> getAllByProjectCode(String projectCode) {
+        return null;
+//        return projectRepository.getAllByProjectCode(projectCode);
     }
 
     @Override
-    public List<Project> getAllByProjectCodeAndProjectNameContains(String projectCode, String projectName) {
-        return projectRepository.getAllByProjectCodeAndProjectNameContains(projectCode, projectName);
+    public List<ProjectOutput> getAllByProjectCodeAndProjectNameContains(String projectCode, String projectName) {
+        return null;
+//        return projectRepository.getAllByProjectCodeAndProjectNameContains(projectCode, projectName);
     }
 }
