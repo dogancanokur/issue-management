@@ -5,11 +5,14 @@ import com.dogancanokur.issuemanagement.model.input.IssueInput;
 import com.dogancanokur.issuemanagement.model.output.IssueOutput;
 import com.dogancanokur.issuemanagement.repository.IssueRepository;
 import com.dogancanokur.issuemanagement.service.IssueService;
+import com.dogancanokur.issuemanagement.util.TPage;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
 
 @Service
 public class IssueServiceImpl implements IssueService {
@@ -34,10 +37,13 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Page<IssueOutput> getAllPageable(Pageable pageable) {
-//        modelMapper.;
-//        return issueRepository.findAll(pageable);
-        return null;
+    public TPage<IssueOutput> getAllPageable(Pageable pageable) {
+        Page<Issue> issuePage = issueRepository.findAll(pageable);
+        TPage<IssueOutput> page = new TPage<>();
+
+        IssueOutput[] issueOutputs = modelMapper.map(issuePage.getContent(), IssueOutput[].class);
+        page.setStats(issuePage, Arrays.asList(issueOutputs));
+        return page;
     }
 
     @Override

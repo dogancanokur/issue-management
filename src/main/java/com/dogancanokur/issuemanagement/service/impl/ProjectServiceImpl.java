@@ -5,12 +5,14 @@ import com.dogancanokur.issuemanagement.model.input.ProjectInput;
 import com.dogancanokur.issuemanagement.model.output.ProjectOutput;
 import com.dogancanokur.issuemanagement.repository.ProjectRepository;
 import com.dogancanokur.issuemanagement.service.ProjectService;
+import com.dogancanokur.issuemanagement.util.TPage;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -41,9 +43,12 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Page<ProjectOutput> findAll(Pageable pageable) {
-//        return projectRepository.findAll(pageable);
-        return null;
+    public TPage<ProjectOutput> findAll(Pageable pageable) {
+        TPage<ProjectOutput> page = new TPage<>();
+        Page<Project> projectList = projectRepository.findAll(pageable);
+        ProjectOutput[] projectOutputs = modelMapper.map(projectList.getContent(), ProjectOutput[].class);
+        page.setStats(projectList, Arrays.asList(projectOutputs));
+        return page;
     }
 
     @Override

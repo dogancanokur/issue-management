@@ -5,11 +5,14 @@ import com.dogancanokur.issuemanagement.model.input.UserInput;
 import com.dogancanokur.issuemanagement.model.output.UserOutput;
 import com.dogancanokur.issuemanagement.repository.UserRepository;
 import com.dogancanokur.issuemanagement.service.UserService;
+import com.dogancanokur.issuemanagement.util.TPage;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -44,15 +47,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserOutput> findAll(Pageable pageable) {
-        return null;
-//        return userRepository.findAll(pageable);
+    public TPage<UserOutput> findAll(Pageable pageable) {
+        TPage<UserOutput> page = new TPage<>();
+        Page<User> userPage = userRepository.findAll(pageable);
+        UserOutput[] userOutputs = modelMapper.map(userPage.getContent(), UserOutput[].class);
+        page.setStats(userPage, Arrays.asList(userOutputs));
+        return page;
     }
 
     @Override
     public UserOutput getByUsername(String username) {
-        return null;
-//        return userRepository.getByUsername(username);
+        return modelMapper.map(userRepository.getByUsername(username), UserOutput.class);
     }
 
 }

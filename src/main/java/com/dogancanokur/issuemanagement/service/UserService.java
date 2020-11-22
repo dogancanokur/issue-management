@@ -2,6 +2,7 @@ package com.dogancanokur.issuemanagement.service;
 
 import com.dogancanokur.issuemanagement.model.input.UserInput;
 import com.dogancanokur.issuemanagement.model.output.UserOutput;
+import com.dogancanokur.issuemanagement.util.TPage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,7 +11,7 @@ public interface UserService {
 
     UserOutput getOne(Long id);
 
-    Page<UserOutput> findAll(Pageable pageable);
+    TPage<UserOutput> findAll(Pageable pageable);
 
     UserOutput getByUsername(String username);
 }
