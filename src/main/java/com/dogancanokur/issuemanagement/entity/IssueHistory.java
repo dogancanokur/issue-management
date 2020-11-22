@@ -3,6 +3,7 @@ package com.dogancanokur.issuemanagement.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "issue_history")
@@ -15,6 +16,10 @@ public class IssueHistory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
     @JoinColumn(name = "issue_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)

@@ -1,9 +1,16 @@
 package com.dogancanokur.issuemanagement.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "project")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class Project extends BaseEntity {
 
     @Id
@@ -11,7 +18,7 @@ public class Project extends BaseEntity {
     private Long id;
 
 
-    @Column(name = "project_code", unique = true)
+    @Column(name = "project_code", unique = true, nullable = false)
     private String projectCode;
 
     @Column(name = "project_name")
