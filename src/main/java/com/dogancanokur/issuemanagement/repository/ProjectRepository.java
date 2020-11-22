@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-    List<Project> getAllByProjectCode(String projectCode);
-
-    List<Project> getAllByProjectCodeAndProjectNameContains(String projectCode, String projectName);
+    Project getByProjectCode(String projectCode);
 
     Page<Project> findAll(Pageable pageable);
 
     List<Project> findAll(Sort sort);
+
+    Project getByProjectCodeAndIdNot(String projectCode, Long id);
 }

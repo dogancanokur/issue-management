@@ -1,6 +1,5 @@
 package com.dogancanokur.issuemanagement.service;
 
-import com.dogancanokur.issuemanagement.entity.Project;
 import com.dogancanokur.issuemanagement.model.input.ProjectInput;
 import com.dogancanokur.issuemanagement.model.output.ProjectOutput;
 import com.dogancanokur.issuemanagement.util.TPage;
@@ -15,9 +14,13 @@ public interface ProjectService {
 
     TPage<ProjectOutput> findAll(Pageable pageable);
 
-    Boolean deleteProject(Project project);
+    Boolean deleteProject(Long id);
 
     List<ProjectOutput> getAllByProjectCode(String projectCode);
 
     List<ProjectOutput> getAllByProjectCodeAndProjectNameContains(String projectCode, String projectName);
+
+    List<ProjectOutput> getAll();
+
+    ProjectOutput update(Long id, ProjectInput projectInput);
 }

@@ -29,12 +29,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectOutput save(ProjectInput projectInput) {
-        if (projectInput.getProjectCode() == null) {
-            throw new IllegalArgumentException("Project code cannot be null!");
+        if (projectRepository.getByProjectCode(projectInput.getProjectCode()) == null) {
+            Project project = modelMapper.map(projectInput, Project.class);
+            return modelMapper.map(projectRepository.save(project), ProjectOutput.class);
+        } else {
+            throw new IllegalArgumentException("Project Code exist!");
         }
-
-        Project project = modelMapper.map(projectInput, Project.class);
-        return modelMapper.map(projectRepository.save(project), ProjectOutput.class);
     }
 
     @Override
@@ -52,20 +52,48 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Boolean deleteProject(Project project) {
-        projectRepository.delete(project);
-        return Boolean.TRUE;
+    public Boolean deleteProject(Long id) {
+        try {
+            projectRepository.deleteById(id);
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
     public List<ProjectOutput> getAllByProjectCode(String projectCode) {
+//        projectRepository.getAllByProjectCode(projectCode);
         return null;
-//        return projectRepository.getAllByProjectCode(projectCode);
     }
 
     @Override
     public List<ProjectOutput> getAllByProjectCodeAndProjectNameContains(String projectCode, String projectName) {
+//        projectRepository.getAllByProjectCodeAndProjectNameContains(projectCode, projectName);
         return null;
-//        return projectRepository.getAllByProjectCodeAndProjectNameContains(projectCode, projectName);
+    }
+
+    @Override
+    public List<ProjectOutput> getAll() {
+        List<Project> projectList = projectRepository.findAll();
+        return Arrays.asList(modelMapper.map(projectList, ProjectOutput[].class));
+
+    }
+
+    @Override
+    public ProjectOutput update(Long id, ProjectInput projectInput) {
+        Project project = projectRepository.getOne(id);
+        if (project == null) {
+            throw new IllegalArgumentException("project not found for id = " + id);
+        }
+        Project projectByProjectCode = projectRepository.getByProjectCodeAndIdNot(projectInput.getProjectCode(), id);
+
+        if (projectByProjectCode != null) {
+            throw new IllegalArgumentException("project code already exist!");
+        }
+        project.setProjectCode(projectInput.getProjectCode());
+        project.setProjectName(projectInput.getProjectName());
+        return modelMapper.map(projectRepository.save(project), ProjectOutput.class);
     }
 }

@@ -1,9 +1,13 @@
 package com.dogancanokur.issuemanagement.service;
 
 import com.dogancanokur.issuemanagement.model.input.IssueInput;
+import com.dogancanokur.issuemanagement.model.input.ProjectInput;
 import com.dogancanokur.issuemanagement.model.output.IssueOutput;
+import com.dogancanokur.issuemanagement.model.output.ProjectOutput;
 import com.dogancanokur.issuemanagement.util.TPage;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 
 public interface IssueService {
@@ -13,5 +17,9 @@ public interface IssueService {
 
     TPage<IssueOutput> getAllPageable(Pageable pageable);
 
-    Boolean deleteIssue(IssueInput issue);
+    Boolean deleteIssue(Long id);
+
+    List<IssueOutput> getAll();
+
+    IssueOutput update(Long id, IssueInput issueInput);
 }
