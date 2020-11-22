@@ -4,6 +4,7 @@ import com.dogancanokur.issuemanagement.model.input.IssueInput;
 import com.dogancanokur.issuemanagement.model.output.IssueOutput;
 import com.dogancanokur.issuemanagement.service.IssueService;
 import com.dogancanokur.issuemanagement.util.ApiPaths;
+import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(ApiPaths.IssueCtrl.CTRL)
+@Api(value = "Issue APIs")
 public class IssueController {
 
     private final IssueService issueService;
