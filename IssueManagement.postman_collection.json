@@ -23,12 +23,42 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/project/",
+							"raw": "http://localhost:9000/api/project/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
+							"path": [
+								"api",
+								"project",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Project Copy 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectCode\": \"FAE77\",\r\n    \"projectName\": \"FAECON\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/project/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
 							"path": [
 								"api",
 								"project",
@@ -53,12 +83,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/project/1",
+							"raw": "http://localhost:9000/api/project/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
 							"path": [
 								"api",
 								"project",
@@ -74,12 +104,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/project/2",
+							"raw": "http://localhost:9000/api/project/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
 							"path": [
 								"api",
 								"project",
@@ -95,12 +125,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/project/all",
+							"raw": "http://localhost:9000/api/project/all",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
 							"path": [
 								"api",
 								"project",
@@ -125,12 +155,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/project/1",
+							"raw": "http://localhost:9000/api/project/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
 							"path": [
 								"api",
 								"project",
@@ -161,12 +191,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/issue/",
+							"raw": "http://localhost:9000/api/issue/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
 							"path": [
 								"api",
 								"issue",
@@ -191,12 +221,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/issue/",
+							"raw": "http://localhost:9000/api/issue/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
 							"path": [
 								"api",
 								"issue",
@@ -212,12 +242,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/issue/all",
+							"raw": "http://localhost:9000/api/issue/all",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "9000",
 							"path": [
 								"api",
 								"issue",
