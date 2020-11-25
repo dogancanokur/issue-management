@@ -6,6 +6,7 @@ import com.dogancanokur.issuemanagement.service.ProjectService;
 import com.dogancanokur.issuemanagement.util.ApiPaths;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(ApiPaths.ProjectCtrl.CTRL)
 @Api(value = "Project APIs")
+@Slf4j
 public class ProjectController {
 
     private final ProjectService projectService;
@@ -26,6 +28,9 @@ public class ProjectController {
     @GetMapping("/{id}")
     @ApiOperation(value = "get by id operation")
     public ResponseEntity<ProjectOutput> getById(@PathVariable(value = "id", required = true) Long id) {
+        log.info("ProjectController -> GetById");// response time
+        log.debug("ProjectController -> GetById -> PARAM :" + id);// parametreler vs
+        // errorda tum detay
         ProjectOutput output = projectService.getOne(id);
 
         return ResponseEntity.ok(output);
