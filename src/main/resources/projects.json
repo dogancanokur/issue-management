@@ -1,0 +1,17 @@
+[
+  {
+    "_class": "com.dogancanokur.issuemanagement.entity.Project",
+    "projectCode": "FAE1994",
+    "projectName": "Faecon"
+  },
+  {
+    "_class": "com.dogancanokur.issuemanagement.entity.Project",
+    "projectCode": "FAE1923",
+    "projectName": "Faecon2"
+  },
+  {
+    "_class": "com.dogancanokur.issuemanagement.entity.Project",
+    "projectCode": "FAE1881",
+    "projectName": "Faecon3"
+  }
+]
