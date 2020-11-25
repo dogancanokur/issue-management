@@ -64,14 +64,17 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectOutput> getAllByProjectCode(String projectCode) {
-//        projectRepository.getAllByProjectCode(projectCode);
-        return null;
+
+        List<Project> allByProjectCode = projectRepository.getAllByProjectCode(projectCode);
+        List<ProjectOutput> outputList = Arrays.asList(modelMapper.map(allByProjectCode, ProjectOutput[].class));
+        return outputList;
     }
 
     @Override
     public List<ProjectOutput> getAllByProjectCodeAndProjectNameContains(String projectCode, String projectName) {
-//        projectRepository.getAllByProjectCodeAndProjectNameContains(projectCode, projectName);
-        return null;
+        List<Project> allByProjectCodeAndProjectNameContains = projectRepository.getAllByProjectCodeAndProjectNameContains(projectCode, projectName);
+        List<ProjectOutput> outputList = Arrays.asList(modelMapper.map(allByProjectCodeAndProjectNameContains, ProjectOutput[].class));
+        return outputList;
     }
 
     @Override

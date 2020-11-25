@@ -27,7 +27,7 @@ public class IssueManagementApplication {
     public Jackson2RepositoryPopulatorFactoryBean populatorFactoryBean() {
 
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[]{new ClassPathResource("projects.json")});
+//        factory.setResources(new Resource[]{new ClassPathResource("projects.json")});
         return factory;
     }
 

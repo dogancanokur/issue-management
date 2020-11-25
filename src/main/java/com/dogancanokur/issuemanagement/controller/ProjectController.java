@@ -4,9 +4,11 @@ import com.dogancanokur.issuemanagement.model.input.ProjectInput;
 import com.dogancanokur.issuemanagement.model.output.ProjectOutput;
 import com.dogancanokur.issuemanagement.service.ProjectService;
 import com.dogancanokur.issuemanagement.util.ApiPaths;
+import com.dogancanokur.issuemanagement.util.TPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,15 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
+    @GetMapping("/pagination")
+    @ApiOperation(value = "Get By Paginaation Operation", response = ProjectOutput.class)
+    public ResponseEntity<TPage<ProjectOutput>> getAllByPagination(Pageable pageable) {
+
+        TPage<ProjectOutput> outputTPage = projectService.findAll(pageable);
+
+        return ResponseEntity.ok(outputTPage);
+    }
+
     @GetMapping("/{id}")
     @ApiOperation(value = "get by id operation")
     public ResponseEntity<ProjectOutput> getById(@PathVariable(value = "id", required = true) Long id) {
@@ -35,6 +46,7 @@ public class ProjectController {
 
         return ResponseEntity.ok(output);
     }
+
 
     @GetMapping("/all")
     @ApiOperation(value = "get all operation")
