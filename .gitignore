@@ -208,3 +208,4 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 /HELP.md
 /.mvn/wrapper/
+/node_modules/
