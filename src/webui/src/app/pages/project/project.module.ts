@@ -1,15 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ProjectComponent } from './project.component';
-import {ProjectRoutingComponent} from "./project.routing.component";
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ProjectComponent} from './project.component';
+import {ProjectRoutingModule} from "./project.routing.module";
+import {ProjectService} from "../../services/shared/project.service";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 
 @NgModule({
   declarations: [ProjectComponent],
   imports: [
     CommonModule,
-    ProjectRoutingComponent
-  ]
+    ProjectRoutingModule,
+    NgxDatatableModule
+  ],
+  providers: [ProjectService]
 })
-export class ProjectModule { }
+export class ProjectModule {
+}

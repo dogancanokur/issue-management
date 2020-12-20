@@ -1,18 +1,20 @@
-import {RouterModule, Routes} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {DashboardComponent} from "./pages/dashboard/dashboard.component";
-import {ProjectComponent} from "./pages/project/project.component";
-import {IssueComponent} from "./pages/issue/issue.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {DashboardModule} from './pages/dashboard/dashboard.module';
+import {ProjectModule} from './pages/project/project.module';
+import {IssueModule} from './pages/issue/issue.module';
 
-const routes: Routes = [{
-  path: '',
-  children: [
-    {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'project', component: ProjectComponent},
-    {path: 'issue', component: IssueComponent},
-  ]
-}];
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
+      {path: 'dashboard', loadChildren: () => DashboardModule},
+      {path: 'project', loadChildren: () => ProjectModule},
+      {path: 'issue', loadChildren: () => IssueModule}
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

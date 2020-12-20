@@ -19,6 +19,7 @@ import java.util.List;
 @RequestMapping(ApiPaths.ProjectCtrl.CTRL)
 @Api(value = "Project APIs")
 @Slf4j
+@CrossOrigin
 public class ProjectController {
 
     private final ProjectService projectService;
@@ -46,7 +47,6 @@ public class ProjectController {
 
         return ResponseEntity.ok(output);
     }
-
 
     @GetMapping("/all")
     @ApiOperation(value = "get all operation")

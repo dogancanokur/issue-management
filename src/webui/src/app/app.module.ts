@@ -1,23 +1,34 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app.routing.module';
-import { AppComponent } from './app.component';
-import {AppLayoutComponent, FooterComponent, HeaderComponent, SidebarComponent} from "../_layout";
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from "@angular/core";
+import {AppComponent} from "./app.component";
+import {HttpClientModule} from "@angular/common/http";
+import {ApiService} from "./services/api.service";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import {ProjectService} from "./services/shared/project.service";
+import {IssueService} from "./services/shared/issue.service";
+import {AppLayoutComponent, FooterComponent, HeaderComponent, SidebarComponent} from "./_layout";
+import {AppRoutingModule} from "./app.routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLayoutComponent,
-    FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgxDatatableModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    ProjectService,
+    IssueService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

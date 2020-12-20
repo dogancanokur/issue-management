@@ -14,7 +14,7 @@ public class TPage<T> {
     private int size;
     private Sort sort;
     private int totalPages;
-    private Long totalElement;
+    private Long totalElements;
     private List<T> content;
 
     public void setStats(Page page, List<T> list) {
@@ -22,7 +22,7 @@ public class TPage<T> {
         this.size = page.getSize();
         this.sort = page.getSort();
         this.totalPages = page.getTotalPages();
-        this.totalElement = page.getTotalElements();
+        this.totalElements = page.getTotalElements();
         this.content = list;
     }
 }

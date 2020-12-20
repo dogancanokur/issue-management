@@ -19,7 +19,7 @@ const routes: Routes = [
   ]
 })
 
-export class IssueRoutingComponent {
+export class IssueRoutingModule {
 
 }
 

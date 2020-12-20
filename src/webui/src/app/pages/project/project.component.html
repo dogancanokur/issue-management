@@ -1,3 +1,16 @@
 <div class="content-wrapper">
-  <p>{{projectMessage}}</p>
+  <ngx-datatable
+    (page)='setPage($event)'
+    [columnMode]="'force'"
+    [columns]="cols"
+    [count]="page.totalElements"
+    [externalPaging]="true"
+    [footerHeight]="50"
+    [headerHeight]="50"
+    [limit]="page.size"
+    [offset]="page.page"
+    [rowHeight]="'auto'"
+    [rows]="rows"
+    class="bootstrap">
+  </ngx-datatable>
 </div>
