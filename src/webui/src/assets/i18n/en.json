@@ -1,5 +1,15 @@
 {
   "Dashboard": "Dashboard",
   "Issue": "Issue",
-  "Project List": "Project List"
+  "Project List": "Project List",
+  "Project Detail": "Project Detail",
+  "New Project": "New Project",
+  "Project Name": "Project Name",
+  "Project Code": "Project Code",
+  "Project Code is required": "Project Code is required",
+  "Project Code should be (min) 4 char": "Project Code should be (min) 4 char",
+  "Project Name is required": "Project Name is required",
+  "Project Name should be (min) 2 char": "Project Name should be (min) 2 char",
+  "Project Name should be (max) 50 char": "Project Name should be (max) 50 char",
+  "Close": "Close"
 }

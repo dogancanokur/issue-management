@@ -5,7 +5,7 @@ import {ProjectRoutingModule} from "./project.routing.module";
 import {ProjectService} from "../../services/shared/project.service";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {SharedModule} from "../../shared/shared.module";
-
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [ProjectComponent],
@@ -13,7 +13,8 @@ import {SharedModule} from "../../shared/shared.module";
     CommonModule,
     ProjectRoutingModule,
     NgxDatatableModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [ProjectService]
 })

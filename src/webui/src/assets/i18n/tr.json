@@ -1,5 +1,15 @@
 {
   "Dashboard": "Ana Sayfa",
   "Issue": "Konu",
-  "Project List": "Proje Listesi"
+  "Project List": "Proje Listesi",
+  "Project Detail": "Proje Detayı",
+  "New Project": "Yeni",
+  "Project Name": "Proje Adı",
+  "Project Code": "Proje Kodu",
+  "Project Code is required": "Proje Kodu girilmelidir.",
+  "Project Code should be (min) 4 char": "Proje Kodu en az 4 karakter olmalıdır.",
+  "Project Name is required": "Proje Adı girilmelidir.",
+  "Project Name should be (min) 2 char": "Proje Kodu en az 2 karakter olmalıdır.",
+  "Project Name should be (max) 50 char": "Proje Kodu en fazla 50 karakter olmalıdır.",
+  "Close": "Kapat"
 }

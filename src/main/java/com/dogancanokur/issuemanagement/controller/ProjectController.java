@@ -55,7 +55,7 @@ public class ProjectController {
         return ResponseEntity.ok(outputList);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     @ApiOperation(value = "save project operation", response = ProjectOutput.class)
     public ResponseEntity<ProjectOutput> createProject(@Valid @RequestBody ProjectInput input) {
         ProjectOutput output = projectService.save(input);
